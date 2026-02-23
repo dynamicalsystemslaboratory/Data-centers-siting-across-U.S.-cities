@@ -1,0 +1,42 @@
+WORKFLOW 1) Build feature matrices (MATLAB) 2) Fit models and spatial
+diagnostics (Python) 3) Run population-based projections and scenario
+analysis (Python)
+
+DATA - dc_by_county_05_01_FINAL.csv: County-level data center counts + geometry 
+- dc_by_msa_micro_05_01_FINAL.csv: MSA/micro-SA data center counts + geometry 
+- msa_population_projections_SSP_wide_by_year.csv: Population projections (2025–2050)
+
+SHAPEFILES 
+- tl_2024_us_cbsa.shp: MSA/MicroSA boundaries 
+- tl_2024_us_county.shp: County boundaries 
+- tl_2023_us_state.shp: State boundaries
+
+FEATURE ENGINEERING (MATLAB) 
+- aggregate_festure_MSA_one.m: Build base regressors 
+- msa_sel_feat.m: Add SAMI variables and export regressors
+Outputs: msa__regressors_totals_nh_area_eia_noprox_ret.csv
+county_regressors_totals_nh_area_eia_noprox_ret.csv
+
+MODELING (PYTHON)
+
+main_final_msa.py: 
+- GLM Negative Binomial regression 
+- Moran’s I residual test 
+- Forest plot, VIF plot 
+- Dominant driver maps 
+- Population projections and scenario trajectories
+
+main_county_final.py: 
+- GLM Negative Binomial regression 
+- Moran’s I residual test 
+
+HOW TO RUN 
+Step 1: Run MATLAB scripts aggregate_festure_MSA_one.m
+msa_sel_feat.m
+
+Step 2: Run Python models python main_final_msa.py python
+main_county_final.py
+
+This project explains where data centers are located, what
+drives their location, and how their distribution may evolve under
+future population scenarios.
