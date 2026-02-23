@@ -1,0 +1,21 @@
+Tigramite_Tests: Contains information theoretic test of independence, taken from the tigramite library (https://github.com/jakobrunge/tigramite). It is needed when selecting mutual information as the independence test in the PC algorithm.
+
+castle: Contains the gcastle library (https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle), with the slight modification of the following files:
+1-castle/common/independence_test.py: We added more independence tests, including the Spearman correlation
+2-castle/algorithms/pc/pc.py: We added the names of the new independence tests so that they can be called in the PC initialization 
+
+msa_cd.py: 
+
+- Load data center counts data for the MSAs
+- Load the regressor variables for the MSAs
+- Merge the two datasets
+- Initialize and run the PC algorithm
+- Compute pairwise correlations
+- Display the causality graph with links colored based on the sign of the correlation
+
+
+Input:
+datasets with columns representing variables, and rows representing realizations
+
+output:
+Causal graph
