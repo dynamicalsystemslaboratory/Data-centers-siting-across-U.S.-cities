@@ -1,0 +1,55 @@
+
+WORKFLOW 
+1) Estimate state-level emissions allocated to data centers 
+2) Classify data centers by Energy Community (EC) category 
+3) Test whether future vs operational sites differ spatially
+
+dc_emission_all.py
+
+- Load data center shapefile, eGRID data, FIPS table, and state polygons 
+- Keep contiguous U.S. only 
+- Compute state emissions factor: tons CO2 / MW of nameplate capacity 
+- Aggregate data centers by state: 
+- count mean / median / min / max capacity 
+- Estimate emissions by multiplying capacity stats by emissions factor 
+- Merge results with state geometries 
+
+INPUTS 
+- Data center shapefile with power_mw field 
+- eGRID emissions spreadsheet 
+- State FIPS table 
+- US states shapefile
+
+OUTPUTS 
+- Emission estimates by state 
+- Scatter plot capacity vs emissions factor 
+- Choropleth emission maps
+
+
+EC_analysis.py
+
+
+ - Load states, MSAs, data centers, and EC layers 
+ - Keep contiguous U.S. and project to EPSG:5070 
+ - Keep data centers located inside cities 
+ - Build mutually exclusive EC spatial areas
+ - Label data centers: 
+    - Current = Operational 
+    - Future = Planned / Under Construction / Land Banked 
+ - Build contingency table (2 × 4) 
+ - Run Chi-square test of independence
+
+OUTPUTS 
+- EC classification of data centers 
+- Contingency table 
+- Chi-square statistical test results
+
+INPUTS 
+- State shapefile 
+- CBSA shapefile 
+- Data center shapefile 
+- IRA Energy Community layers (Coal + Energy Revenue) 
+- State FIPS table
+
+SUMMARY These scripts quantify data-center emissions and test whether
+future development is disproportionately located in Energy Communities.
