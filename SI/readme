@@ -1,0 +1,36 @@
+URBAN SCALING ANALYSIS
+
+DC_Count_Scaling_Fig.py 
+
+Scaling law between city population and number of data centers. 
+Outputs: scaling plots + SAMIs.
+
+Regressors_Scaling_Fig.py 
+
+Scaling relationships between population and key regressors: 
+- IT employment 
+- Energy expenditure 
+- Nameplate capacity 
+Outputs: scaling figures and regressions.
+
+DC_Scaling_MSAnMicro.py Build scaling dataset linking: 
+- Data centers
+- Population 
+- MSA / MicroSA geography
+
+Scaling_Robustness_Check.py 
+Robustness tests for scaling results using alternative datasets and regressions.
+Outputs: Scaling exponents, regression diagnostics, robustness checks.
+
+SPATIAL CLUSTERING + SUPPLEMENTARY ANALYSIS
+
+clustering_SI.py 
+K-means clustering of MSAs based on data-center characteristics.
+Outputs: clustering maps and silhouette score diagnostics.
+
+SI2.py 
+City vs non-city county comparison: 
+- Classify counties by CBSA overlap 
+- Count data centers per county 
+- Welch t-test (city > non-city)
+Outputs: CSV summary.
